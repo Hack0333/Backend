@@ -25,7 +25,7 @@ app.get('/create/post',async(req,res)=>{
     });
     const user = await userModel.findOne({_id : "66f8d6e60cfbc122432d67d8"});
     user.posts.push(post._id);
-    user.save();
+    await user.save();
     const allUser = await userModel.find();
     res.send(allUser);
     
