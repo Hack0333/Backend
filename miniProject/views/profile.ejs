@@ -28,7 +28,7 @@
                     <div class="flex justify-between item-center">
                         <h2 class="text-blue-800 font-bold">@<%= post.author.username %></h2>
                         <% if (post.author._id.equals(user._id)) { %>
-                            <a href="/delete/<%= post._id %>" class="text-zinc-600 hover:text-red-700">x</a>
+                            <a href="/delete/<%= post._id %>" class="text-red-200 hover:text-red-700">x</a>
                         <% } %>
                     </div>
                     <h4 class="font-light text-xl mt-1"><%= post.title %></h4>
@@ -39,7 +39,7 @@
                             <%= post.likes.length > 0 ? ' ' + post.likes.length : '' %>
                         </a>
                         <% if (post.author._id.equals(user._id)) { %>
-                            <a href="/edit/<%= post._id %>" class="text-zinc-700 hover:underline">Edit</a>
+                            <a href="/edit/<%= post._id %>" class="text-zinc-500 hover:underline">Edit</a>
                         <% } %>
                     </div>
                 </div>

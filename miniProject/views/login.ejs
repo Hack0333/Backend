@@ -8,11 +8,11 @@
 </head>
 <body>
     <main class="w-full h-screen bg-zinc-900 p-10 text-zinc-300">
-        <div class="flex justify-between w-[35%] item-center mb-5">
+        <div class="flex justify-between w-full sm:w-[35%] item-center mb-5">
             <h1 class="text-3xl">Login</h1>
-            <a href="/" class="p-1 text-xl rounded-md bg-orange-600">Register</a>
+            <a href="/" class="p-1 sm:text-xl rounded-md bg-orange-600">Register</a>
         </div>
-        <form action="/login" method="post" >
+        <form action="/login" method="post" class="flex flex-col gap-2 sm:block">
          <input class="px-2 py-1 mr-2 rounded-md bg-transparent outline-none border-[1px] border-zinc-700" type="email" name="email" placeholder="Enter Your Email">
          <input class="px-2 py-1 rounded-md bg-transparent outline-none border-[1px] border-zinc-700" type="password" name="password" placeholder="Enter Your password">
          <button class="px-2 py-1 rounded-md bg-blue-600" type="">Login</button>
