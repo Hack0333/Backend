@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -8,6 +9,7 @@ const cookieParser = require("cookie-parser");
 const app = express();
 const { isLoggedIn } = require("./middleware/auth.js");
 const { log } = require("console");
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -39,7 +41,7 @@ app.post("/register", async (req, res) => {
 
           const token = jwt.sign(
             { userid: createdUser._id, email: createdUser.email },
-            "Deepak@123"
+            process.env.JWT_KEY
           );
 
           res.cookie("token", token);
@@ -69,7 +71,7 @@ app.post("/login", async (req, res) => {
       if (isMatch) {
         const token = jwt.sign(
           { userid: user._id, email: user.email },
-          "Deepak@123"
+          process.env.JWT_KEY
         );
 
         res.cookie("token", token);
@@ -171,4 +173,7 @@ app.post("/edit/:id", isLoggedIn, async (req, res) => {
   res.redirect("/profile");
 });
 
-app.listen(3000);
+const port = process.env.PORT || 5000;
+app.listen(port, () => {
+  console.log(`server is running on port ${port}`)
+});
