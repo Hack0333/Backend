@@ -8,7 +8,7 @@ const Post = require("./models/post.js");
 const cookieParser = require("cookie-parser");
 const app = express();
 const { isLoggedIn } = require("./middleware/auth.js");
-const { log } = require("console");
+const mongoose = require("mongoose");
 
 
 app.use(express.json());
@@ -16,6 +16,17 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.set("view engine", "ejs");
 app.set(express.static(path.join(__dirname, "public")));
+
+const connectDb = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI);
+    console.log("Connected to MongoDB");
+  } catch (error) {
+    console.log("Error connecting to MongoDB:", error);
+  }
+};
+
+connectDb();
 
 app.get("/", (req, res) => {
   res.render("index");
