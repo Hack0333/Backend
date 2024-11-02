@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Multer File Upload</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <main class="w-full h-screen bg-zinc-900 p-10 text-zinc-300">
+        <form action="/upload" method="post" enctype="multipart/form-data" class="flex flex-col gap-2 sm:block">
+            <input class="px-2 py-1 rounded-md bg-transparent outline-none border-[1px] border-zinc-700" type="file" name="image" required>
+            <button class="px-2 py-1 rounded-md bg-blue-600" type="submit">Upload</button>
+        </form>
+    </main>
+</body>
+</html>

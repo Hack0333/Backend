@@ -54,7 +54,8 @@ app.post("/register", async (req, res) => {
 
           const token = jwt.sign(
             { userid: createdUser._id, email: createdUser.email },
-            process.env.JWT_KEY
+            process.env.JWT_KEY,
+            { expiresIn: "1d" }
           );
 
           res.cookie("token", token);
@@ -84,7 +85,8 @@ app.post("/login", async (req, res) => {
       if (isMatch) {
         const token = jwt.sign(
           { userid: user._id, email: user.email },
-          process.env.JWT_KEY
+          process.env.JWT_KEY,
+          { expiresIn: "1d" }
         );
 
         res.cookie("token", token);
